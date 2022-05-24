@@ -1,9 +1,98 @@
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <style>
+      
+      #txar{
+        width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+h1{
+    text-align: center;
+}
+
+div{
+
+
+    width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+body{
+    background-color: 		rgb(255,255,102)
+}
+#btn
+{
+
+
+    background-color: white;
+}
+        </style>
 
  
     </head>
     <body>
-        aaaaas
+         <h1> Banana Language</h1>
+        <h2>about</h2>
+        <h3>Are you a fan of minions? Did you know that the gibberish they say is an actual language. Use the translator to convert your text from English to Minion speak or Banana language.</h3>
+     <textarea  id="txar" rows="4" colss="40"   placeholder="Enter text here" >
+
+     </textarea >
+    </br>
+    </br>
+    </br>
+     <button id="btn">Translate</button>
+    </br>
+</br>
+</br>
+     <div id="divv">
+
+     </div>
+     <script>
+
+     
+    
+
+        function show()
+        {
+            var a=document.getElementById("txar").value;
+            var obj;
+            const fetchPromise = fetch("https://api.funtranslations.com/translate/minion.json?text="+a);
+            fetchPromise.then(response => {
+  return response.json();
+}).then(people => {
+  document.getElementById("divv").innerHTML=people.contents.translated;;
+});
+
+
+            
+        }
+
+// async function show ()
+// {
+//     var a=document.getElementById("txar").value;
+//  const res=await axios.get("https://api.funtranslations.com/translate/minion.json?text="+a);
+//  document.getElementById("divv").innerHTML=res.data.contents.translated;
+ 
+
+
+// }
+//                // document.querySelector("#btn").addEventListener("click", show);
+                document.getElementById("btn").addEventListener("click", show);
+       
+    </script>
     </body>
 </html>
